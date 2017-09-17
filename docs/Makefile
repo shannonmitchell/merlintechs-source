@@ -6,7 +6,8 @@ SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
 SPHINXPROJ    = Merlintechs
 SOURCEDIR     = .
-BUILDDIR      = ~/shannonmitchell.github.io/
+BUILDDIR      = _build
+PUBLISH_REPO  = ../../shannonmitchell.github.io/
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -20,4 +21,4 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 allthethings: html
-	cd $(BUILDDIR)/html; git add .; git commit -m "rebuild docs"; git push origin master
+	mv $(BUILDDIR)/html/* $(PUBLISH_REPO)/; cd $(PUBLISH_REPO); git add .; git commit -m "rebuild docs"; git push origin master
