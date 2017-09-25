@@ -4,10 +4,10 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = Merlintechs
+SPHINXPROJ    = MerlinTechs
 SOURCEDIR     = .
 BUILDDIR      = _build
-PUBLISH_REPO  = ../../shannonmitchell.github.io/
+PUBLISH_REPO  = ../../shannonmitchell.github.io
 
 # Put it first so that "make" without argument is like "make help".
 help:
@@ -21,4 +21,4 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 allthethings: html
-	mv $(BUILDDIR)/html/* $(PUBLISH_REPO)/; cd $(PUBLISH_REPO); git add .; git commit -m "rebuild docs"; git push origin master
+	rm -rf $(PUBLISH_REPO)/*; mv $(BUILDDIR)/html/* $(PUBLISH_REPO)/; cd $(PUBLISH_REPO); touch $(PUBLISH_REPO)/.nojekyll; touch $(PUBLISH_REPO)/_static/.nojekyll; git add .; git commit -a -m "rebuild docs"; git push --force origin master

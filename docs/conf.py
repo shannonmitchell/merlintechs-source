@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# Merlintechs documentation build configuration file, created by
+# Merlintechs build configuration file, created by
 # sphinx-quickstart on Sun Sep 17 16:37:29 2017.
 #
 # This file is execfile()d with the current directory set to its
@@ -68,7 +68,8 @@ language = None
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+#exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = []
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -82,13 +83,23 @@ todo_include_todos = False
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-html_theme = 'alabaster'
+#html_theme = 'alabaster'
+#html_theme = 'classic'
+html_theme = 'bizstyle'
+#html_theme = 'scrolls'
+html_logo = '_static/monkey_logo.png'
+
+html_title = 'MerlinTechs'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
 # html_theme_options = {}
+#html_theme_options = {
+#  "rightsidebar": "false",
+#  "relbarbgcolor": "black"
+#}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -100,15 +111,15 @@ html_static_path = ['_static']
 #
 # This is required for the alabaster theme
 # refs: http://alabaster.readthedocs.io/en/latest/installation.html#sidebars
-html_sidebars = {
-    '**': [
-        'about.html',
-        'navigation.html',
-        'relations.html',  # needs 'show_related': True theme option to display
-        'searchbox.html',
-        'donate.html',
-    ]
-}
+#html_sidebars = {
+#    '**': [
+#        'about.html',
+#        'navigation.html',
+#        'relations.html',  # needs 'show_related': True theme option to display
+#        'searchbox.html',
+#        'donate.html',
+#    ]
+#}
 
 
 # -- Options for HTMLHelp output ------------------------------------------
@@ -141,7 +152,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Merlintechs.tex', u'Merlintechs Documentation',
+    (master_doc, 'Merlintechs.tex', u'MerlinTechs',
      u'Shannon Mitchell', 'manual'),
 ]
 
@@ -151,7 +162,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'merlintechs', u'Merlintechs Documentation',
+    (master_doc, 'merlintechs', u'MerlinTechs',
      [author], 1)
 ]
 
@@ -162,7 +173,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'Merlintechs', u'Merlintechs Documentation',
+    (master_doc, 'Merlintechs', u'MerlinTechs',
      author, 'Merlintechs', 'One line description of project.',
      'Miscellaneous'),
 ]
