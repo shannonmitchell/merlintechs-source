@@ -3,6 +3,7 @@ Creating your own github site using sphinx
 ############################################
 
 
+***********************************************
 Set up a python virtualenv and install software
 ***********************************************
 
@@ -15,6 +16,7 @@ Set up a python virtualenv and install software
   pip install python-sphinx
 
 
+*****************************************
 Pull down your personal github pages repo
 *****************************************
 
@@ -29,6 +31,7 @@ Go into github and create a new repository called <username>.github.io
   git config --global user.email shannon.mitchell@merlintechs.com
 
 
+***********************
 Create your source repo
 ***********************
 
@@ -79,13 +82,12 @@ I first went into github and created a new repo called merlintechs-source.
   git push origin master
 
 
+***********************
 View it in your browser
 ***********************
 
 It make take a few seconds to update. When it did, I could access the site at the following locaiton.
 
 http://shannonmitchell.github.io
-
-
 
 

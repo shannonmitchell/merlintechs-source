@@ -2,28 +2,36 @@
 Connect To Rackspace Public Cloud
 ##################################
 
-This is just for python-openstackclient configuration.  The older way was to 
-source environment files and use separate clients for each service.  You would 
-have to use something like supernova to manage all of the different 
-environments.  The openstack client this built into its own config file.   
+This is just for python-openstackclient configuration.  The more traditional way
+was to source environment files and use separate clients for each service.  You 
+would have to use something like supernova to manage multiple environments. The 
+python-openstack client has its own config file to accomplish the same thing. 
 
+
+**************************************
 Set up your python virutal environment
 **************************************
 
 Before connecting, we will need all of the openstack client tools.  You do NOT 
 want to go down the road of using the OS provided python modules or things will 
-eventually break.  Its just easier to deal with a virtualenv in the long run.
+eventually break.  Its just easier to deal with a dedicated virtualenv just for
+python-openstack client use. The next time you go to update your workstation, 
+this is one less thing you will need to worry about(mostly).
 
-Install the python virtuenv package(Ubuntu/Debian)
---------------------------------------------------
+
+Install the python virtuenv package
+===================================
+
+Ubuntu/Debian
+-------------
 
 .. code-block:: sh
 
   apt-get update
   apt-get install python-virtualenv  
 
-Install the python virtuenv package(Fedora)
---------------------------------------------------
+Fedora/Redhat
+-------------
 
 .. code-block:: sh
 
@@ -31,7 +39,7 @@ Install the python virtuenv package(Fedora)
 
 
 Create the python virtualenv
-----------------------------
+=============================
 
 .. code-block:: sh
 
@@ -39,23 +47,25 @@ Create the python virtualenv
 
 
 Make it active
-----------------
+==============
 
 .. code-block:: sh
 
   . ${HOME}/rs_pub_venv/bin/activate
 
 
+********************************
 Install the nova client software
---------------------------------
+********************************
 
 .. code-block:: sh
 
   pip install python-openstackclient
 
 
+**********************
 Create the config file
------------------------
+**********************
 
 I like to create a different entry for each region to keep
 from having to put full --os-region-name argument on every
@@ -67,7 +77,7 @@ call.
 
   vi ${HOME}/.config/openstack/clouds.yml
 
-.. code-block:: sh
+.. code-block:: none
 
   clouds:
     rs-dfw:
@@ -120,8 +130,9 @@ call.
 
 
 
+***********
 Test it out
------------
+***********
 
 .. code-block:: sh
   
@@ -131,8 +142,9 @@ Test it out
   openstack --os-cloud rs-dfw image list
 
 
+************
 Add your key
-------------
+************
 
 .. code-block:: sh
 
@@ -141,8 +153,9 @@ Add your key
   openstack --os-cloud rs-dfw keypair create --public-key ${HOME}/.ssh/id_rsa.pub mytestkey
 
 
+**************************
 Boot and Log into a server
-----------------------------
+**************************
 
 .. code-block:: sh
 
@@ -157,8 +170,9 @@ Boot and Log into a server
 
 
 
+********************
 All the other things
---------------------
+********************
 
 You can use help to get all of the available/required settings and arguments.
 A command may have several layers and the openstack help will give help for
@@ -171,8 +185,9 @@ each.
   openstack help command subcommand
 
 
+**********
 Future Use
-----------
+**********
 
 Remember to source your virtualenv activate file before running any openstack 
 commands.
