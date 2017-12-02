@@ -8,14 +8,14 @@ Learning Tech Concepts Using Linux
 .. toctree::
    :maxdepth: 1
 
-   dns.rst
+   dns/dns.rst
 
 Basic Linux Tasks
 *****************
 .. toctree::
    :maxdepth: 1
 
-   dns-server.rst
+   dns/dns-server.rst
 
 
 

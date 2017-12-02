@@ -16,7 +16,8 @@ Important Info
 - At the top of the tree you have the 'root' dns servers(https://en.wikipedia.org/wiki/DNS_root_zone)
 - root dns servers handle queries for the last part of the fqdn(.com, .org...)
 - When you buy a domain from a domain name registrar, you provide at least 2 ips for your dns servers.  
-- NS or special glue records for your new domain are set up in the root servers for each ip of your dns servers.  
+- NS or special glue records for your new domain are set up in the root servers which point your domain to the registrar's dns servers(usually).
+- The registrar's dns servers are usually configure via NS or glue records to point your domain to the ip addresses provided during registration.
 - Your dns servers and are now authoritative for your new domain(responsible for replying to queries for this domain).
 - You can also delegate subdomains downstream of your parent domains to other dns servers using NS or glue records.
 - Forwarders(upstream domain server ips) are configured on your dns server that are queried when your domain server isn't authoritative for a requested domain or subdomains.
@@ -45,7 +46,10 @@ Here we want to provide a general idea of what happens when you access a service
 
 .. code-block:: sh
 
-  # grep hosts /etc/nsswitch.conf
+  grep hosts /etc/nsswitch.conf
+
+.. code-block:: none
+
   hosts:          files dns
 
 3. Queries are ran from left to right 1st match wins.  'files' is checked first and 'dns' second.
@@ -91,3 +95,23 @@ Here we want to provide a general idea of what happens when you access a service
 
 Linux DNS Tools
 ***************
+
+Many tools exist, but 'dig' is usually the first goto tool for troubleshooting dns issues.
+
+- dig:  DNS lookup utility.  You can troubleshoot most dns issues using dig. Please do a 'man dig' and take the time to just read over it and play.  Taking the time to read over this at least once will help later on.
+- host: DNS lookup utility.  Can do a small subset of what dig is able to do.  Stick with dig.
+- nslookup: Was the norm until dig came along.  It has an interactive mode.  See the man pages for more detail.
+- arpaname: Handy for converting ip addresses to the arpa name(ip octets reversed with .in-addr.arpa suffix)
+- delv: Similar to dig, but can be used for validating dnssec.
+
+
+
+.. container:: toggle
+
+    .. container:: header
+
+      **Show/Hide Code**
+
+    .. code-block:: sh
+
+      cat /etc/hosts

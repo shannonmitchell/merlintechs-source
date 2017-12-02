@@ -1,0 +1,25 @@
+; Setting the origin keeps you from having to use the full fqdn on records
+; This is not needed as long as the zone is deinfed in named.conf.  We are
+; putting it here anyway to cover its usage.
+$ORIGIN 209.162.in-addr.arpa.
+
+; Setting a 5 minute TTL(time to live meaning time records are cached)
+$TTL    300
+
+; SOA record provides various zone config data used for various things.
+@       IN      SOA     dns.parentdomain.local. shannon.mitchell.merlintechs.com. (
+                        2017102101      ; serial YYYYMMDDnn
+                        86400           ; refersh (24   hours)
+                        7200            ; retry   (2    hours)
+                        3600000         ; expire  (1000 hours)
+                        172800 )        ; minimum (2    days)
+
+; NS Records
+        IN      NS      dns.parentdomain.local.
+
+
+; Set origon for /25 for this section. This is to keep from having to add 96 to each entry.  
+$ORIGIN 96.209.162.in-addr.arpa.
+
+; reverse or pointer records
+43      IN      PTR     dns.parentdomain.local.

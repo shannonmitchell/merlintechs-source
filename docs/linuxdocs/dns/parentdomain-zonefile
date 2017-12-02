@@ -1,0 +1,34 @@
+; Setting the origin keeps you from having to use the full fqdn on records
+; This is not needed as long as the zone is deinfed in named.conf.  We are
+; putting it here anyway to cover its usage.
+$ORIGIN parentdomain.local.
+
+; Setting a 5 minute TTL(time to live meaning time records are cached)
+$TTL    300
+
+; SOA record provides various zone config data used for various things.
+@       IN      SOA     dns.parentdomain.local. shannon.mitchell.merlintechs.com. (
+                        2017102101      ; serial YYYYMMDDnn
+                        86400           ; refersh (24   hours)
+                        7200            ; retry   (2    hours)
+                        3600000         ; expire  (1000 hours)
+                        172800 )        ; minimum (2    days)
+
+
+; name servers - NS records
+        IN      NS      dns.parentdomain.local.
+
+; mail servers
+        IN      MX      10      mail.parentdomain.local.
+
+
+; name servers
+dns     IN      A       162.209.96.43
+ns      IN      CNAME   dns
+
+
+; web servers
+www     IN      A       162.209.94.43
+
+; mail servers
+mail    IN      A       162.209.94.43
